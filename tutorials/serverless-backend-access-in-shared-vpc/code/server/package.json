@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "google-auth-library": "^7.0.0",
-    "got": "^11.0.0",
+    "got": "^12.6.0",
     "mocha": "^10.1.0",
     "supertest": "^6.0.0"
   }
