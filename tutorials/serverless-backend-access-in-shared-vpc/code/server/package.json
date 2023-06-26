@@ -18,11 +18,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.3.1"
   },
   "devDependencies": {
     "google-auth-library": "^7.0.0",
-    "got": "^11.0.0",
+    "got": "^12.6.0",
     "mocha": "^10.1.0",
     "supertest": "^6.0.0"
   }
