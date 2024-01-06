@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "semistandard",
     "build": "node ./bin/build",
-    "test": "mocha -t 120000 ./test/*"
+    "test": "mocha -t 120000 -r esm ./test/*"
   },
   "semistandard": {
     "globals": [
@@ -21,7 +21,7 @@
     ]
   },
   "devDependencies": {
-    "mocha": "~10.2.0",
+    "mocha": "^10.2.1",
     "semistandard": "17.0.0"
   }
 }
