@@ -4,9 +4,9 @@ const webpack = require('webpack');
 module.exports = {
   entry: { prerender: './prerender.ts' },
   resolve: { extensions: ['.js', '.ts'] },
-  target: 'node10',
+  target: 'node12',
   // Set the minimum Node.js version to 10
-  node: { fs: 'empty', __dirname: true, global: true, process: true, Buffer: true, __filename: true, global: true, __dirname: true, __filename: true, Buffer: false, process: false },
+  ,
   mode: 'none',
   // this makes sure we include node_modules and other 3rd party libraries
   externals: [/(node_modules|main\..*\.js)/],
