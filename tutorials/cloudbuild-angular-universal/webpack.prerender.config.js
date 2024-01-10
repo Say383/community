@@ -7,7 +7,8 @@ module.exports = {
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   // Set the minimum Node.js version to 10
-  "10",
+  "engines": { "node": ">=10" },
+  >=10,
   mode: 'none',
   // this makes sure we include node_modules and other 3rd party libraries
   externals: [/(node_modules|main\..*\.js)/],
