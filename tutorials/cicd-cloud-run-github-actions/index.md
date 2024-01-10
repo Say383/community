@@ -248,7 +248,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
 
 {% verbatim %}
 
-    name: Docker
+    name: Cloud Run Deployment
 
     on:
       push:
