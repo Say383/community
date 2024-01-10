@@ -123,7 +123,7 @@ You will create a repository called `tour-of-heroes-universal`
     installing jq on your workstation.
 
         SCRIPT_ADDITIONS=$(echo '  {
-        "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
+        "build:prerender": "npm run build:client-and-server-bundles:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
         "generate:prerender": "npm run webpack:prerender && node dist/prerender.js",
         "compile:prerender": "tsc -p prerender.tsconfig.json",
         "webpack:prerender": "webpack --config webpack.prerender.config.js"
