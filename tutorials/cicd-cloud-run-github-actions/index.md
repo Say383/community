@@ -39,7 +39,7 @@ This tutorial should not generate any usage that would not be covered by the [fr
 
 This tutorial assumes that you're using a Unix-like operating system.
 
-This tutorial uses the [Cloud SDK command-line interface](https://cloud.google.com/sdk/install) to set up the environment, but you can also use the
+This tutorial uses the [Cloud SDK command-line interface is used to interact with Google Cloud resources, and it must be installed and authenticated with the correct Google account](https://cloud.google.com/sdk/install) to set up the environment, but you can also use the
 [Cloud Console](https://console.cloud.google.com).
 
 ## Architecture overview
@@ -116,7 +116,7 @@ Here is a unit test for the `HelloWorld` function that verifies whether the func
     func TestHelloWorld(t *testing.T) {
         var expected Phrase
 
-        expected.Text = "Hello, world"
+        expected := HelloWorld\(\)
         result := HelloWorld()
 
         if expected.Text != result.Text {
@@ -136,7 +136,7 @@ For example, the command should look something like this:
 ## Dockerfile code
 
     FROM golang:alpine
-    ENV CGO_ENABLED=0
+    ENV CGO_ENABLED 0
 
     WORKDIR /app
     COPY . .
@@ -144,7 +144,7 @@ For example, the command should look something like this:
     RUN go mod download
     RUN go build -o main .
 
-    EXPOSE $PORT
+    EXPOSE $PORT           $PORT is the environment variable for the port
 
     CMD [ "./main" ]
 
@@ -156,8 +156,8 @@ it.
 1.  To make your life easier, export these environment variables so that you can copy and paste the commands used here. Choose whatever name you want, but the 
     `$PROJECT_ID` has to be a unique name, because project IDs can't be reused in Google Cloud.
 
-        export PROJECT_ID=
-        export ACCOUNT_NAME=
+        export PROJECT_ID=$GCP_PROJECT_ID
+        export ACCOUNT_NAME=$GCP_ACCOUNT_NAME
 
     For example, your commands should look something like this:
 
@@ -168,7 +168,7 @@ it.
 
         gcloud auth login
 
-1.  Create a project and select that project:
+1.  Create a project and select that project using the gcloud command-line interface:
 
         gcloud projects create $PROJECT_ID
         gcloud config set project $PROJECT_ID
@@ -181,7 +181,7 @@ it.
 
         gcloud services enable cloudbuild.googleapis.com run.googleapis.com containerregistry.googleapis.com
 
-1.  Create a service account:
+1.  Create a service account and add the required roles: Cloud Run Admin, Storage Admin, and Service Account User.
 
         gcloud iam service-accounts create $ACCOUNT_NAME \
           --description="Cloud Run deploy account" \
@@ -202,7 +202,7 @@ it.
           --member=serviceAccount:$ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com \
           --role=roles/iam.serviceAccountUser
 
-1.  Generate a `key.json` file with your credentials, so your GitHub workflow can authenticate with Google Cloud:
+1.  Generate a `key.json` file with your credentials, so your GitHub workflow can authenticate with Google Cloud and set its content as the `GCP_CREDENTIALS` secret
 
         gcloud iam service-accounts keys create key.json \
             --iam-account $ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com
@@ -219,9 +219,10 @@ In GitHub, you need to set up a secrets environment in your repository, with the
 
 For example, your settings should look something like this:
 
-    GCP_PROJECT_ID = project-example
-    GCP_APP_NAME = app-name
-    GCP_EMAIL = account-name@project-example.iam.gserviceaccount.com
+    GCP_PROJECT_ID: $GCP_PROJECT_ID
+    GCP_APP_NAME: $GCP_APP_NAME
+    GCP_EMAIL: $GCP_EMAIL
+    GCP_CREDENTIALS: $GCP_CREDENTIALS
 
 Cat the `key.json` content and paste it into the `GCP_CREDENTIALS` secret value.
 
@@ -253,7 +254,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
             name: Setup Gcloud Account
             runs-on: ubuntu-latest
             env:
-              IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+              IMAGE_NAME: gcr.io/$\{{ secrets.GCP_PROJECT_ID }}/$\{{ secrets.GCP_APP_NAME }}
             steps:
 
             - name: Login
@@ -279,7 +280,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
               run: docker push $IMAGE_NAME
 
             - name: Deploy Docker image
-              run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
+              run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region ${{ secrets.GCP_REGION }} --platform ${{ secrets.GCP_PLATFORM }}
 
 {% endverbatim %}
 
