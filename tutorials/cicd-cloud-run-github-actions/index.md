@@ -88,7 +88,7 @@ returns a JSON response with "Hello, world".
 
     func HelloWorld() Phrase {
         return Phrase{
-                Text: "Hello, world",
+            Text: "Hello, world",
         }
     }
 
@@ -96,13 +96,15 @@ returns a JSON response with "Hello, world".
         json.NewEncoder(w).Encode(HelloWorld())
     }
 
-    func main() {
-        router := mux.NewRouter()
-        router.HandleFunc("/", GetPhrase).Methods("GET")
+    func TestHelloWorld(t *testing.T) {
+        expected := Phrase{
+            Text: "Hello, world",
+        }
+        result := HelloWorld()
 
-        port := os.Getenv("PORT")
-        log.Print("Started API on port: " + port)
-        log.Fatal(http.ListenAndServe(":"+port, router))
+        if expected.Text != result.Text {
+            t.Errorf("Phrase was incorrect. Got: %s, want: %s.", result.Text, expected.Text)
+        }
     }
 
 Here is a unit test for the `HelloWorld` function that verifies whether the function returns a `“Hello, world”` string:
@@ -139,6 +141,14 @@ For example, the command should look something like this:
     ENV CGO_ENABLED=0
 
     WORKDIR /app
+    func main() {
+        router := mux.NewRouter()
+        router.HandleFunc("/", GetPhrase).Methods("GET")
+
+        port := os.Getenv("PORT")
+        log.Print("Started API on port: " + port)
+        log.Fatal(http.ListenAndServe(":"+port, router))
+    }
     COPY . .
 
     RUN go mod download
