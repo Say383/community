@@ -127,7 +127,7 @@ exports.receiveNotification = function receiveNotification (req, res) {
   validator.validate(JSON.parse(req.body), async function (err, message) {
     if (err) {
       // the message did not validate
-      res.status(403).end('invalid SNS message');
+      res.status(403).end('invalid SNS message, could not validate the message');
       return;
     }
     if (message.TopicArn !== expectedTopicArn) {
