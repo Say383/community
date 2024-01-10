@@ -308,11 +308,9 @@ If you go into your Actions (click the yellow ball), you can see in real time yo
 
 ![build](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/img4.png)
 
-Troubleshooting:
+### Troubleshooting Failed GitHub Actions Runs
 
-    1.  To view error logs for failed GitHub Actions runs, use the following command to list your service and get its link: gcloud run services list
-
-![result](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/img5.png)
+If you encounter errors in your GitHub Actions runs, you can follow the troubleshooting steps provided in [troubleshooting.md](./troubleshooting.md) to diagnose and resolve common issues.
 
 Common GitHub Actions Errors and Solutions:
 3.  __Error__: Build fails with 'No such file or directory' when running a script
@@ -331,6 +329,9 @@ To delete a project, do the following:
 1.  In the dialog, type the project ID, and then click **Shut down** to delete the project.
 
 ### What's next
+
+3. Troubleshooting Failed GitHub Actions Runs
+   - For troubleshooting steps related to failed GitHub Actions runs, refer to [Troubleshooting Failed GitHub Actions Runs](./troubleshooting.md#failed-actions-runs).
 
 2.  Visit the Google Cloud Console to view the error logs and diagnostic information for failed runs. Error messages and their solutions can be found in the GitHub Actions documentation or the Google Cloud community forums. Here are some common error messages and their solutions: [Google Cloud developer tools](https://cloud.google.com/products/tools).
 - Try out other Google Cloud features for yourself. Have a look at our [tutorials](https://cloud.google.com/docs/tutorials).
