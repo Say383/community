@@ -64,7 +64,12 @@ describe('tutorials/', () => {
         // TODO: Handle tests for other languages
         fs.stat(path.join(dir, 'package.json'), (err, stats) => {
           if (err) {
-            // Ignore error
+            // Handle error
+if (err) {
+  console.error('Error parsing package.json:', err);
+  done();
+  return;
+}
             done();
             return;
           }
