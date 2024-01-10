@@ -24,6 +24,9 @@ If your build fails with the error message 'No such file or directory' when runn
 ### Error: Workflow is not triggered on push
 
 If your workflow is not triggered on push, follow these steps to troubleshoot:
+1. Verify the workflow file configuration, including the `on` section specifying the `push` event for the desired branches.
+2. Double-check that the branch you are pushing to matches the branch specified in the workflow file.
+3. Ensure that the workflow file is located in the correct directory and has the correct file name (`GCP-Deploy.yml` in the `.github/workflows` directory).
 
 1. Verify that the push event is appropriately configured in the workflow file. Check the `on` section of the workflow file and ensure that the `push` event is included for the desired branches.
 2. Double-check that the branch you are pushing to matches the branch specified in the workflow file. The branch names are case-sensitive.
