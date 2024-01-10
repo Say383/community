@@ -4,7 +4,7 @@
     "lint": "semistandard",
     "build": "node ./bin/build",
     "test": "mocha -t 120000 ./test/*"
-  },
+  ,,
   "semistandard": {
     "globals": [
       "after",
@@ -28,7 +28,7 @@
       "tutorials/cloud-functions-rate-limiting/**"
     ]
   },
-  "engines": {"node": ">=10"},
+  "engines": {"node": ">=10",
   "devDependencies": {
     "mocha": "10.2.0",
     "semistandard": "17.0.0"
