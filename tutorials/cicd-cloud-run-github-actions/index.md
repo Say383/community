@@ -219,9 +219,10 @@ In GitHub, you need to set up a secrets environment in your repository, with the
 
 For example, your settings should look something like this:
 
-    GCP_PROJECT_ID = project-example
-    GCP_APP_NAME = app-name
-    GCP_EMAIL = account-name@project-example.iam.gserviceaccount.com
+    GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+    GCP_APP_NAME: ${{ secrets.GCP_APP_NAME }}
+    GCP_EMAIL: ${{ secrets.GCP_EMAIL }}
+    GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
 Cat the `key.json` content and paste it into the `GCP_CREDENTIALS` secret value.
 
@@ -253,7 +254,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
             name: Setup Gcloud Account
             runs-on: ubuntu-latest
             env:
-              IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+              IMAGE_NAME: gcr.io/$\{{ secrets.GCP_PROJECT_ID }}/$\{{ secrets.GCP_APP_NAME }}
             steps:
 
             - name: Login
@@ -279,7 +280,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
               run: docker push $IMAGE_NAME
 
             - name: Deploy Docker image
-              run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
+              run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region ${{ secrets.GCP_REGION }} --platform ${{ secrets.GCP_PLATFORM }}
 
 {% endverbatim %}
 
