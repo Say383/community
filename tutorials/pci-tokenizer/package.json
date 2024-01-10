@@ -1,5 +1,5 @@
 {
-  "name": "gcp-pci-tokenizer",
+  name": "gcp-pci-tokenizer",
   "version": "1.0.0",
   "description": "Simple credit card tokenization service",
   "repository": "github.com/GoogleCloudPlatform/community",
