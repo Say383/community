@@ -3,8 +3,9 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: { prerender: './prerender.ts' },
+  node: { global: true, __filename: false, __dirname: false },
   resolve: { extensions: ['.js', '.ts'] },
-  target: '10',
+  target: 'node',
   // Set the minimum Node.js version to 10
   ,
   mode: 'none',
