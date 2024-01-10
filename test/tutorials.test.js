@@ -60,7 +60,7 @@ describe('tutorials/', () => {
         });
       });
 
-      it.skip('tests pass, if any', (done) => {
+      it('checks for successful npm install and npm test', (done) => {
         // TODO: Handle tests for other languages
         fs.stat(path.join(dir, 'package.json'), (err, stats) => {
           if (err) {
@@ -70,7 +70,7 @@ describe('tutorials/', () => {
           }
 
           utils.runAsync('npm install', dir)
-            .then(() => utils.runAsync('npm test', dir))
+            .then(() => utils.runAsync('npm test', dir + '/functions'))
             .then((output) => {
               console.log(output);
               done();
