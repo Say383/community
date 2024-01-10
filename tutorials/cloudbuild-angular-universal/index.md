@@ -129,10 +129,8 @@ You will create a repository called `tour-of-heroes-universal`
         "webpack:prerender": "webpack --config webpack.prerender.config.js"
         }')
         cat package.json | jq --argjson additions "$SCRIPT_ADDITIONS" '.scripts + $additions' >tmpfile
-rm tmpfile
-mv tmpfile package.json
-        cp tmpfile package.json
         rm tmpfile
+        mv tmpfile package.json
 
 8.  Add the `package.json` changes to Git:
 
@@ -153,7 +151,6 @@ mv tmpfile package.json
         gcloud compute backend-buckets create $PROJECT-angular-app-backend \
         --gcs-bucket-name=$PROJECT-angular-app \
         --enable-cdn
-
 1.  Create a multi-regional IP address:
 
         gcloud compute addresses create angular-app-ip --global
@@ -161,20 +158,34 @@ mv tmpfile package.json
 
 1.  Create the URL map:
 
-        gcloud compute url-maps create web-map --default-backend-bucket $PROJECT-angular-app-backend
-
-1.  Create the HTTP proxy:
-
-        gcloud compute target-http-proxies create http-lb-proxy \
-        --url-map web-map
-
-1.  Create the forwarding rule:
-
-        gcloud compute forwarding-rules create http-content-rule \
-        --address angular-app-ip \
-        --global \
-        --target-http-proxy http-lb-proxy \
-        --ports 80
+steps:
+- id: install_packages
+  name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'install'
+- id: prerender_browser_files
+  name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'run'
+  - 'build:prerender'
+           args:
+           - 'run'
+           - 'build:prerender'
+           waitFor:
+           - install_packages
+         - id: copy_prerendered_files
+           name: 'gcr.io/cloud-builders/gsutil'
+           args: ['cp','-r','dist/browser/*', '\${_ANGULAR_APP_BUCKET_PATH}']
+           waitFor:
+           - prerender_browser_files
+         - id: set_website_configuration
+           name: 'gcr.io/cloud-builders/gsutil'
+             args: ['web', 'set', '-m', 'index.html','\${_ANGULAR_APP_BUCKET_PATH}']
+           waitFor:
+           - copy_prerendered_files
+           args: ['acl','ch','-u','AllUsers:R','-r', '\${_ANGULAR_APP_BUCKET_PATH}']
+           waitFor:
+           - copy_prerendered_files
 
 ## Create the Cloud Build file and add it to the Git repository
 
