@@ -64,7 +64,7 @@ describe('tutorials/', () => {
         // TODO: Handle tests for other languages
         fs.stat(path.join(dir, 'package.json'), (err, stats) => {
           if (err) {
-            // Handle error
+            // Handle error if package.json does not exist
 if (err) {
   console.error('Error parsing package.json:', err);
   done();
@@ -85,13 +85,30 @@ if (err) {
 
       it('filename', () => {
         if (stats.isDirectory()) {
+  assert(DIR_REGEXP.test(entry), `filename should be of the form ${DIR_REGEXP}. Actual: ${entry}.`);
           assert(DIR_REGEXP.test(entry), `filename should be of the form ${DIR_REGEXP}. Actual: ${entry}.`);
         } else {
-          assert(FILENAME_REGEXP.test(entry), `filename should be of the form ${FILENAME_REGEXP}. Actual: ${entry}.`);
+            assert(FILENAME_REGEXP.test(entry), `filename should be of the form ${FILENAME_REGEXP}. Actual: ${entry}.`);
         }
       });
 
       it('frontmatter', () => {
+  const matches = TUTORIAL_YAML_REGEXP.exec(content);
+  assert(TUTORIAL_YAML_REGEXP.test(content), `frontmatter should be of the form ${TUTORIAL_YAML_REGEXP}. Actual: ${content}`);
+  const [
+    ,
+    title,
+    description,
+    author,
+    tags,
+    datePublished
+  ] = matches;
+
+  assert(TITLE_REGEXP.test(title), `title should be of the form ${TITLE_REGEXP}. Actual: ${title}.`);
+  assert(DESCRIPTION_REGEXP.test(description), `description should be of the form ${DESCRIPTION_REGEXP}. Actual: ${description}.`);
+  assert(GITHUB_REGEXP.test(author), `author should be of the form ${GITHUB_REGEXP}. Actual: ${author}.`);
+  assert(TAGS_REGEXP.test(tags), `tags should be of the form ${TAGS_REGEXP}. Actual: ${tags}.`);
+  assert(DATE_REGEXP.test(datePublished), `datePublished should be of the form YYYY-MM-DD. Actual: ${datePublished}.`);
         const matches = TUTORIAL_YAML_REGEXP.exec(content);
         assert(TUTORIAL_YAML_REGEXP.test(content), `frontmatter should be of the form ${TUTORIAL_YAML_REGEXP}. Actual: ${content}`);
         const [
