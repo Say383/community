@@ -28,3 +28,10 @@ If your workflow is not triggered on push, follow these steps to troubleshoot:
 3. Ensure that the workflow file is located in the correct directory and has the correct file name (`GCP-Deploy.yml` in the `.github/workflows` directory).
 
 These are just a few examples of common issues and their solutions. If you encounter other errors or need further assistance, refer to the GitHub Actions documentation or reach out to the Google Cloud community forums for support.
+
+## Additional Information
+
+Please provide any additional information about the error you encountered here:
+## Additional Information
+
+Please provide any additional information about the error you encountered here:
