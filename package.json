@@ -20,7 +20,7 @@
       "tutorials/cloud-functions-rate-limiting/**"
     ]
   },
-  "engines": {"node": "10.x"},
+  "engines": {"node": ">=10"},
   "devDependencies": {
     "mocha": "10.2.0",
     "semistandard": "17.0.0"
