@@ -19,6 +19,11 @@
       "tutorials/appengine-nodejs-webpack/**",
       "tutorials/cloud-functions-rate-limiting/**"
     ]
+    "ignore": [
+      "**/node_modules/**",
+      "tutorials/appengine-nodejs-webpack/**",
+      "tutorials/cloud-functions-rate-limiting/**"
+    ]
   },
   "engines": {"node": ">=10"},
   "devDependencies": {
