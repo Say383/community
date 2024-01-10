@@ -15,6 +15,8 @@ To view error logs for failed GitHub Actions runs, follow these steps:
 ### Error: Build fails with 'No such file or directory' when running a script
 
 If your build fails with the error message 'No such file or directory' when running a script, follow these steps to troubleshoot:
+1. Check the file paths in your script commands and make sure they are correct. Ensure that the files referenced in the script exist in the correct locations.
+2. Verify that the necessary files are included in your repository and are accessible during the build process.
 
 1. Check the file paths in your script commands and make sure they are correct. Ensure that the files referenced in the script exist in the correct locations.
 2. Verify that the necessary files are included in your repository and are accessible during the build process.
