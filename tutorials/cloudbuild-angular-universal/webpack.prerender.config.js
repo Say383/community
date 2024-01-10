@@ -4,9 +4,9 @@ const webpack = require('webpack');
 module.exports = {
   entry: { prerender: './prerender.ts' },
   resolve: { extensions: ['.js', '.ts'] },
-  target: 'node',
+  target: 'node10',
   // Set the minimum Node.js version to 10
-  node: { fs: 'empty', __dirname: true, global: true, process: true, Buffer: true },
+  node: { fs: 'empty', __dirname: true, global: true, process: true, Buffer: true, __filename: true, global: true, __dirname: true, __filename: true, Buffer: false, process: false },
   mode: 'none',
   // this makes sure we include node_modules and other 3rd party libraries
   externals: [/(node_modules|main\..*\.js)/],
@@ -18,7 +18,7 @@ module.exports = {
     rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
   },
   plugins: [
-    // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
+    // Temporary Fix for issue: https://github.com/angular/core/angular/issues/11580
     // for 'WARNING Critical dependency: the request of a dependency is an expression'
     new webpack.ContextReplacementPlugin(
       /(.+)?angular(\\|\/)core(.+)?/,
