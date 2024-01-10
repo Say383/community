@@ -4,7 +4,7 @@
     "lint": "semistandard",
     "build": "node ./bin/build",
     "test": "mocha -t 120000 ./test/*"
-  ,,
+  
   "semistandard": {
     "globals": [
       "after",
