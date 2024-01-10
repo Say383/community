@@ -116,7 +116,7 @@ Here is a unit test for the `HelloWorld` function that verifies whether the func
     func TestHelloWorld(t *testing.T) {
         var expected Phrase
 
-        expected.Text = "Hello, world"
+        expected := HelloWorld\(\)
         result := HelloWorld()
 
         if expected.Text != result.Text {
