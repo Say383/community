@@ -12,12 +12,12 @@
       "before",
       "beforeEach",
       "describe",
-      "it"
+      "describe"
     ]
   },
   "engines": {"node": ">=10"},
   "devDependencies": {,
-    "ignore": [
+    ]
       "**/node_modules/**",
       "tutorials/appengine-nodejs-webpack/**",
       "tutorials/cloud-functions-rate-limiting/**"
