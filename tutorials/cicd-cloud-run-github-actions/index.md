@@ -136,7 +136,7 @@ For example, the command should look something like this:
 ## Dockerfile code
 
     FROM golang:alpine
-    ENV CGO_ENABLED=0
+    ENV CGO_ENABLED 0
 
     WORKDIR /app
     COPY . .
@@ -144,7 +144,7 @@ For example, the command should look something like this:
     RUN go mod download
     RUN go build -o main .
 
-    EXPOSE $PORT
+    EXPOSE $PORT           $PORT is the environment variable for the port
 
     CMD [ "./main" ]
 
