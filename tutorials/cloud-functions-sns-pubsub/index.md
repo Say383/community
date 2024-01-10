@@ -198,7 +198,6 @@ The `receiveNotification` function does the following:
 1.  Validates that the request came from SNS. SNS signs each message.
 1.  Confirms a pending subscription when the function is first set up as an SNS subscription.
 1.  Relays messages published to the SNS topic into Google Cloud Pub/Sub.
-
 Be sure to update the Pub/Sub topic if it is different in your project, and
 update the `expectedTopicArn` to match the ARN of your SNS topic.
 
