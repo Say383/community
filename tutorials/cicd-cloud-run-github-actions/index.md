@@ -137,7 +137,7 @@ For example, the command should look something like this:
 
 ## Dockerfile code
 
-    FROM golang:alpine
+FROM golang:1.16-alpine
     ENV CGO_ENABLED=0
 
     WORKDIR /app
