@@ -298,13 +298,17 @@ If you go into your Actions (click the yellow ball), you can see in real time yo
 
 ![build](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/img4.png)
 
-You can list your service, get its link, and access it in your browser:
+Troubleshooting:
 
-    gcloud run services list
+    1.  To view error logs for failed GitHub Actions runs, use the following command to list your service and get its link: gcloud run services list
 
 ![result](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/img5.png)
 
-And that’s it! Each time you push a change to the default branch, GitHub builds, tests, and deploys it automatically.
+Common GitHub Actions Errors and Solutions:
+3.  __Error__: Build fails with 'No such file or directory' when running a script
+   - __Solution__: Check the file paths in your script commands and make sure they are correct.
+4.  __Error__: Workflow is not triggered on push
+   - __Solution__: Verify that the push event is appropriately configured in the workflow file.
 
 ### Cleaning up
 
@@ -318,5 +322,5 @@ To delete a project, do the following:
 
 ### What's next
 
-- Learn more about [Google Cloud developer tools](https://cloud.google.com/products/tools).
+2.  Visit the Google Cloud Console to view the error logs and diagnostic information for failed runs. Error messages and their solutions can be found in the GitHub Actions documentation or the Google Cloud community forums. Here are some common error messages and their solutions: [Google Cloud developer tools](https://cloud.google.com/products/tools).
 - Try out other Google Cloud features for yourself. Have a look at our [tutorials](https://cloud.google.com/docs/tutorials).
