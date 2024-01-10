@@ -13,7 +13,10 @@
       "beforeEach",
       "describe",
       "it"
-    ],
+    ]
+  },
+  "engines": {"node": ">=10"},
+  "devDependencies": {,
     "ignore": [
       "**/node_modules/**",
       "tutorials/appengine-nodejs-webpack/**",
