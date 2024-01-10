@@ -127,7 +127,7 @@ exports.receiveNotification = function receiveNotification (req, res) {
   validator.validate(JSON.parse(req.body), async function (err, message) {
     if (err) {
       // the message did not validate
-      res.status(403).end('invalid SNS message');
+      res.status(403).end('invalid SNS message, could not validate the message');
       return;
     }
     if (message.TopicArn !== expectedTopicArn) {
@@ -198,7 +198,6 @@ The `receiveNotification` function does the following:
 1.  Validates that the request came from SNS. SNS signs each message.
 1.  Confirms a pending subscription when the function is first set up as an SNS subscription.
 1.  Relays messages published to the SNS topic into Google Cloud Pub/Sub.
-
 Be sure to update the Pub/Sub topic if it is different in your project, and
 update the `expectedTopicArn` to match the ARN of your SNS topic.
 

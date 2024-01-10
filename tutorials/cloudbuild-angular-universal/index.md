@@ -122,15 +122,9 @@ You will create a repository called `tour-of-heroes-universal`
     tutorial on your workstation, see [jq installation](https://stedolan.github.io/jq/download/) for instructions on 
     installing jq on your workstation.
 
-        SCRIPT_ADDITIONS=$(echo '  {
-        "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
-        "generate:prerender": "npm run webpack:prerender && node dist/prerender.js",
-        "compile:prerender": "tsc -p prerender.tsconfig.json",
-        "webpack:prerender": "webpack --config webpack.prerender.config.js"
-        }')
-        cat package.json | jq --argjson additions "$SCRIPT_ADDITIONS" '.scripts = .scripts+$additions' >tmpfile
-        cp tmpfile package.json
-        rm tmpfile
+        SCRIPT_ADDITIONS='{ "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender", "generate:prerender": "npm run webpack:prerender && node dist/prerender.js", "compile:prerender": "tsc -p prerender.tsconfig.json", "webpack:prerender": "webpack --config webpack.prerender.config.js" }'
+        cat package.json | jq --arg additions "$SCRIPT_ADDITIONS" '.scripts += $additions' > tmpfile
+        mv tmpfile package.json
 
 8.  Add the `package.json` changes to Git:
 
