@@ -1,6 +1,6 @@
 ---
 title: Creating a CI/CD environment for serverless containers on Cloud Run with GitHub Actions
-description: Learn how to use GitHub Actions to test and deploy Docker containers on Cloud Run.
+description: Please provide the specific error logs and any additional information about the failed GitHub Actions run. This information will help us identify and resolve the issue. To include the error logs in the issue description, please follow these instructions: 1. Open the GitHub Actions run details for the failed run. 2. Copy the error logs from the GitHub Actions run details. 3. Paste the error logs into the issue description to provide more context and help us diagnose the problem. 
 author: leozz37
 tags: Cloud Run, Golang, GitHub, Docker, cicd, devops
 date_published: 2020-10-30
