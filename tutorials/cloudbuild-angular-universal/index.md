@@ -186,13 +186,16 @@ mv tmpfile package.json
 2.  Create the `cloudbuild.yaml` file:
 
          cat <<CLOUDBUILD_FILE>cloudbuild.yaml
-         steps:
-         - id: install_packages
-           name: 'gcr.io/cloud-builders/npm'
-           args:
-           - 'install'
-         - id: prerender_browser_files
-           name: 'gcr.io/cloud-builders/npm'
+steps:
+- id: install_packages
+  name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'install'
+- id: prerender_browser_files
+  name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'run'
+  - 'build:prerender'
            args:
            - 'run'
            - 'build:prerender'
@@ -205,11 +208,9 @@ mv tmpfile package.json
            - prerender_browser_files
          - id: set_website_configuration
            name: 'gcr.io/cloud-builders/gsutil'
-           args: ['web', 'set', '-m', 'index.html','\${_ANGULAR_APP_BUCKET_PATH}']
+             args: ['web', 'set', '-m', 'index.html','\${_ANGULAR_APP_BUCKET_PATH}']
            waitFor:
            - copy_prerendered_files
-         - id: set_permissions_for_website_files
-           name: 'gcr.io/cloud-builders/gsutil'
            args: ['acl','ch','-u','AllUsers:R','-r', '\${_ANGULAR_APP_BUCKET_PATH}']
            waitFor:
            - copy_prerendered_files
