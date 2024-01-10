@@ -219,10 +219,10 @@ In GitHub, you need to set up a secrets environment in your repository, with the
 
 For example, your settings should look something like this:
 
-    GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-    GCP_APP_NAME: ${{ secrets.GCP_APP_NAME }}
-    GCP_EMAIL: ${{ secrets.GCP_EMAIL }}
-    GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+    GCP_PROJECT_ID: $GCP_PROJECT_ID
+    GCP_APP_NAME: $GCP_APP_NAME
+    GCP_EMAIL: $GCP_EMAIL
+    GCP_CREDENTIALS: $GCP_CREDENTIALS
 
 Cat the `key.json` content and paste it into the `GCP_CREDENTIALS` secret value.
 
