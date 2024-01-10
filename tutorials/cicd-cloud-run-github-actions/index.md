@@ -25,6 +25,10 @@ of the sample code and its Dockerfile.
 *   Create a GitHub Action workflow file to deploy your code on Cloud Run.
 *   Make the code accessible for anyone.
 
+## Troubleshooting
+
+Refer to the [troubleshooting steps](/tutorials/cicd-cloud-run-github-actions/troubleshooting.md) to troubleshoot any issues that may arise during the deployment process.
+
 ## Costs
 
 This tutorial uses billable components of Google Cloud, including the following:
@@ -333,4 +337,4 @@ To delete a project, do the following:
 ### What's next
 
 2.  Visit the Google Cloud Console to view the error logs and diagnostic information for failed runs. Error messages and their solutions can be found in the GitHub Actions documentation or the Google Cloud community forums. Here are some common error messages and their solutions: [Google Cloud developer tools](https://cloud.google.com/products/tools).
-- Try out other Google Cloud features for yourself. Have a look at our [tutorials](https://cloud.google.com/docs/tutorials).
+- For more troubleshooting steps and solutions, refer to the [troubleshooting section](#troubleshooting) of this tutorial. Additionally, visit the [troubleshooting steps](/tutorials/cicd-cloud-run-github-actions/troubleshooting.md) provided in the troubleshooting.md file.
