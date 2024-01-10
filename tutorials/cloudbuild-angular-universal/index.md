@@ -128,7 +128,9 @@ You will create a repository called `tour-of-heroes-universal`
         "compile:prerender": "tsc -p prerender.tsconfig.json",
         "webpack:prerender": "webpack --config webpack.prerender.config.js"
         }')
-        cat package.json | jq --argjson additions "$SCRIPT_ADDITIONS" '.scripts = .scripts+$additions' >tmpfile
+        cat package.json | jq --argjson additions "$SCRIPT_ADDITIONS" '.scripts + $additions' >tmpfile
+rm tmpfile
+mv tmpfile package.json
         cp tmpfile package.json
         rm tmpfile
 
