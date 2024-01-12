@@ -7,6 +7,7 @@ module.exports = {
   target: 'node',
   mode: 'none',
   // this makes sure we include node_modules and other 3rd party libraries
+  target: 'node',
   externals: [/(node_modules|main\..*\.js)/],
   output: {
     path: path.join(__dirname, 'dist'),
