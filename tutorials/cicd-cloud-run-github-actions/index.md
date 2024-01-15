@@ -2,8 +2,8 @@
 title: Creating a CI/CD environment for serverless containers on Cloud Run with GitHub Actions
 description: Learn how to use GitHub Actions to test and deploy Docker containers on Cloud Run.
 author: leozz37
-tags: Cloud Run, Golang, GitHub, Docker, cicd, devops
-date_published: 2020-10-30
+tags: Cloud Run, Golang, GitHub, Docker, CI/CD, DevOps
+date_published: 2022-09-01
 ---
 
 Leonardo Lima
@@ -14,6 +14,41 @@ In this article, you set up an environment for automated building, testing, and 
 
 For Docker, the language that you're using isn't important, but this tutorial uses the Go programming language. This tutorial doesn't go into a deep explanation
 of the sample code and its Dockerfile.
+
+![cover](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/cover.png)
+
+## Objectives
+
+*   Create a simple REST API with Go.
+*   Write a unit test for your code.
+*   Create a Dockerfile.
+*   Create a GitHub Actions workflow file to deploy your code on Cloud Run.
+*   Make the code accessible for anyone.
+
+## Costs
+
+This tutorial uses billable components of Google Cloud, including the following:
+
+*   [Cloud Run](https://cloud.google.com/run)
+*   [Cloud Storage](https://cloud.google.com/storage)
+
+This tutorial should not generate any usage that would not be covered by the [free tier](https://cloud.google.com/free/), but you can use the
+[pricing calculator](https://cloud.google.com/products/calculator/) to generate a cost estimate based on your projected production usage.
+
+## Prerequisites
+
+This tutorial assumes that you're using a Unix-like operating system.
+
+This tutorial uses the [Cloud SDK command-line interface](https://cloud.google.com/sdk/install) to set up the environment, but you can also use the
+[Cloud Console](https://console.cloud.google.com).
+
+## Architecture overview
+
+First, take a look at the infrastructure used in this tutorial:
+
+![architecture](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/architecture.png)
+
+Every time you push to your GitHub repository, it triggers a GitHub Actions workflow that builds and tests your code. If it builds and every test passes, your
 
 ![cover](https://storage.googleapis.com/gcp-community/tutorials/cicd-cloud-run-github-actions/cover.png)
 
