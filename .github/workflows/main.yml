@@ -1,0 +1,19 @@
+const fs = require('fs');
+const yaml = require('js-yaml');
+
+const filePath = '.github/workflows/main.yml';
+
+// Read the contents of the file
+const fileContent = fs.readFileSync(filePath, 'utf8');
+
+// Parse the YAML content into a JavaScript object
+const workflow = yaml.safeLoad(fileContent);
+
+// Update the value of the node-version key
+workflow.jobs.build.strategy.matrix.node_version = '10.x';
+
+// Convert the JavaScript object back to YAML format
+const updatedContent = yaml.safeDump(workflow);
+
+// Write the updated YAML content back to the file
+fs.writeFileSync(filePath, updatedContent, 'utf8');
