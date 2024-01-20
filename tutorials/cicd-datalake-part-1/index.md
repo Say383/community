@@ -298,7 +298,7 @@ the Cloud build to respond to changes in the GitHub repository to test and run y
 
 1.  In the **Source section**, do the following:
       * **Repository**: Select your repository.
-      * **Branch**: Select **.*(any branch)**.
+      * **Branch**: Select the desired branch for triggering the build (e.g., main).
 
 1.  In the **Build configuration** section, select **Cloud Build configuration file**.
 

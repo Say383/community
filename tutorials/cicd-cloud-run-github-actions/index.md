@@ -242,7 +242,7 @@ Create a `GCP-Deploy.yml` file and copy this content into it:
 
     on:
       push:
-        branches: [ master ]
+        branches: [ main ]
       pull_request:
         branches: [ master ]
 
