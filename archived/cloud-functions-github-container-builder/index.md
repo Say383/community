@@ -119,9 +119,24 @@ Create a file named `index.js` with the following contents:
 [embedmd]:# (index.js)
 ```js
 'use strict';
+### Generating a GitHub personal access token
+
+1. Go to your GitHub account settings.
+2. Click on "Developer settings" in the left sidebar.
+3. Click on "Personal access tokens".
+4. Click on "Generate new token".
+5. Give your token a description.
+6. Select the scopes you want to grant to this token. For this Cloud Function, select `repo:status`.
+7. Click on "Generate token".
+8. Copy the generated token.
+9. Open the `index.js` file.
+10. Replace the `[TOKEN]` placeholder with the copied token.
+11. Save the file.
+
+Make sure to keep your personal access token secure and do not share it with anyone.
 
 const octokit = require('@octokit/rest')();
-const GITHUB_ACCESS_TOKEN = '[TOKEN]';
+const GITHUB_ACCESS_TOKEN = 'YOUR_GITHUB_ACCESS_TOKEN';
 
 /**
  * Background Cloud Function to be triggered by cloud-builds Pub/Sub topic.
