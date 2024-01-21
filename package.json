@@ -1,4 +1,6 @@
 {
+  "engines": {
+    "node": ">=10" },
   "private": true,
   "scripts": {
     "lint": "semistandard",
