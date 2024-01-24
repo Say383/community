@@ -1,0 +1,19 @@
+{
+  "name": "cloudbuild-angular-universal",
+  "version": "1.0.0",
+  "description": "Cloud Build Angular Universal",
+  "scripts": {
+    "test": "mocha -t 120000 ./test/*"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-loader": "^8.0.0",
+    "typescript": "^4.0.5",
+    "yargs-parser": "^20.2.2"
+  },
+  "engines": {
+    "node": "10"
+  }
+}
